@@ -13,6 +13,8 @@ export interface MovieType {
   vote_average: number;
 }
 
+const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function MovieList() {
       method: "get",
       url: "https://api.themoviedb.org/3/discover/movie",
       params: {
-        api_key: "ec352fb64bfb3844339d782d42210705",
+        api_key: apiKey,
         language: "en-US",
       },
     }).then((response) => {
